@@ -73,6 +73,19 @@ export function Home() {
         </div>
       </section>
 
+      <section className="section-pad border-y border-white/10 bg-card">
+        <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2">
+          <div>
+            <p className="eyebrow mb-4">Location</p>
+            <h2 className="mb-4 text-3xl font-light md:text-5xl">Find <span className="font-serif italic text-primary">us</span></h2>
+            <p className="text-muted-foreground">Sundays at 10:00 AM</p>
+            <p className="mt-2 text-muted-foreground">{church.addressFull}</p>
+            <a href={church.mapsLink} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 rounded bg-primary px-5 py-3 text-sm font-medium"><MapPin className="size-4" />Get directions</a>
+          </div>
+          <iframe title="Map to Dominion City Regina" src={church.mapsEmbed} loading="lazy" className="h-[360px] w-full rounded-lg border-0 grayscale transition hover:grayscale-0" referrerPolicy="no-referrer-when-downgrade" />
+        </div>
+      </section>
+
       <section className="section-pad">
         <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2">
           <div>

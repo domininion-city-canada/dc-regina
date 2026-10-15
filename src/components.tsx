@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Heart, MapPin, Phone, Menu, X, Clock, Copy, Check } from "lucide-react";
+import { MapPin, Phone, Menu, X, Clock, Copy, Check } from "lucide-react";
 import { church } from "@/data";
 
 const links = [
@@ -14,12 +14,9 @@ const links = [
 
 export function Logo() {
   return (
-    <Link to="/" className="flex items-center gap-2.5">
-      <Heart className="size-7 fill-primary text-primary" aria-hidden />
-      <span className="leading-tight">
-        <span className="block text-sm font-semibold">Dominion City</span>
-        <span className="block text-[11px] tracking-[0.3em] text-muted-foreground uppercase">Regina</span>
-      </span>
+    <Link to="/" className="flex items-center gap-3" aria-label="Dominion City Regina home">
+      <img src="/images/dominion-city-logo.png" alt="Dominion City logo" width={48} height={33} className="h-9 w-auto md:h-10" />
+      <span className="text-[11px] font-medium tracking-[0.35em] text-muted-foreground uppercase">Regina</span>
     </Link>
   );
 }
@@ -73,7 +70,7 @@ export function Footer() {
             <a key={p} href={`tel:${p.replace(/[^+\d]/g, "")}`} className="flex gap-2 hover:text-white"><Phone className="mt-0.5 size-4 text-primary" />{p}</a>
           ))}
           <div className="flex gap-4 pt-2">
-            <a href={church.instagram} target="_blank" rel="noreferrer" className="hover:text-white">Instagram</a>
+            <a href={church.instagram} target="_blank" rel="noreferrer" className="hover:text-white">Instagram {church.handle}</a>
             <a href={church.facebook} target="_blank" rel="noreferrer" className="hover:text-white">Facebook</a>
           </div>
         </div>
