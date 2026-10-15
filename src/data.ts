@@ -6,7 +6,6 @@ export const church = {
   phones: ["+1 (639) 997-1522", "+1 (639) 525-4711"],
   handle: "@dominioncityregina",
   instagram: "https://www.instagram.com/dominioncityregina",
-  facebook: "https://www.facebook.com/dominioncityregina",
   interac: "dcregina@dominioncitycanada.org",
   mapsLink: "https://maps.app.goo.gl/ooak9WK3rL9PQfus8",
   mapsEmbed: "https://www.google.com/maps?q=Dominion+City+Regina,+2144B+Broad+St,+Regina,+SK+S4P+1Y5&output=embed",

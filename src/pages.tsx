@@ -225,7 +225,6 @@ export function Contact() {
             </a>
           ))}
           <a href={church.instagram} target="_blank" rel="noreferrer" className="rounded-lg border border-white/10 bg-card p-6 hover:border-primary"><p className="text-xl">Instagram</p><p className="mt-1 text-sm text-muted-foreground">{church.handle}</p></a>
-          <a href={church.facebook} target="_blank" rel="noreferrer" className="rounded-lg border border-white/10 bg-card p-6 hover:border-primary"><p className="text-xl">Facebook</p><p className="mt-1 text-sm text-muted-foreground">{church.handle}</p></a>
         </div>
       </section>
     </>

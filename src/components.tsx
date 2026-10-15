@@ -71,7 +71,6 @@ export function Footer() {
           ))}
           <div className="flex gap-4 pt-2">
             <a href={church.instagram} target="_blank" rel="noreferrer" className="hover:text-white">Instagram {church.handle}</a>
-            <a href={church.facebook} target="_blank" rel="noreferrer" className="hover:text-white">Facebook</a>
           </div>
         </div>
       </div>
