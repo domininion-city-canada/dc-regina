@@ -24,7 +24,7 @@ export function Home() {
   return (
     <>
       <section className="relative flex min-h-[85vh] items-center overflow-hidden px-5">
-        <img src="/images/divine-acceleration-alt.jpg" alt="" className="absolute inset-0 size-full object-cover opacity-15" />
+        <img src="/images/regina-legislative-building.jpg" alt="" className="absolute inset-0 size-full object-cover opacity-30" />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40" />
         <div className="relative mx-auto w-full max-w-6xl py-20">
           <p className="eyebrow mb-6">Welcome home</p>

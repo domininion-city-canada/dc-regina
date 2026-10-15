@@ -78,7 +78,7 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <p className="border-t border-white/10 py-5 text-center text-xs text-muted-foreground">© {YEAR} Dominion City Regina. Part of <a className="underline" href="https://dominioncitycanada.org" target="_blank" rel="noreferrer">Dominion City Canada</a>.</p>
+      <p className="border-t border-white/10 py-5 text-center text-xs text-muted-foreground">© {YEAR} Dominion City Regina. Hero photo: <a className="underline" href="https://commons.wikimedia.org/wiki/File:Saskatchewan_Legislative_Building_-_Regina.jpg" target="_blank" rel="noreferrer">Saskatchewan Legislative Building</a> by Quintin Soloviev, <a className="underline" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>. Part of <a className="underline" href="https://dominioncitycanada.org" target="_blank" rel="noreferrer">Dominion City Canada</a>.</p>
     </footer>
   );
 }
