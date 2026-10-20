@@ -11,7 +11,7 @@ const GivePage = () => (
       description="Give to Dominion City Regina by Interac e-Transfer: offerings, tithes and partnership."
     />
     <PageIntro eyebrow="Give cheerfully" title="Offerings &" accent="contributions" />
-    <GiveSection id="give" />
+    <GiveSection id="give" addressFirst />
   </Page>
 );
 

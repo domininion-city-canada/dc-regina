@@ -3,7 +3,8 @@ import { Check, Copy } from 'lucide-react';
 import { GIVING } from '@/data/site';
 
 /** Interac e-Transfer details on the cream surface, with a copy button. */
-const GiveSection: React.FC<{ id?: string }> = ({ id = 'give-section' }) => {
+/** `addressFirst` puts the e-Transfer address above the heading on phones (the Give page). */
+const GiveSection: React.FC<{ id?: string; addressFirst?: boolean }> = ({ id = 'give-section', addressFirst = false }) => {
   const [copied, setCopied] = useState(false);
 
   const copy = async () => {
@@ -36,7 +37,7 @@ const GiveSection: React.FC<{ id?: string }> = ({ id = 'give-section' }) => {
           </blockquote>
         </div>
 
-        <div className="lg:col-span-7 lg:pt-16">
+        <div className={`lg:col-span-7 lg:pt-16 ${addressFirst ? 'order-first lg:order-none' : ''}`}>
           <div className="border-t border-b border-[hsl(222_47%_11%/0.12)] py-10">
             <span className="block mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-accent-coral">
               Interac e-Transfer
