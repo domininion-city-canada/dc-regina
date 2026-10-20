@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PROGRAMS } from '@/data/site';
+import { useCurrent } from '@/lib/dated';
 
 const EYEBROW_COLOURS = ['text-accent-coral', 'text-accent-indigo', 'text-accent-yellow'];
 
-const AboutSection: React.FC = () => (
+const AboutSection: React.FC = () => {
+  const programs = useCurrent(PROGRAMS);
+  return (
   <section id="about-us-section" className="bg-[hsl(40_20%_97%)] text-[hsl(222_47%_11%)] py-24 md:py-40">
     <div className="container mx-auto grid lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24 items-start">
       <div>
@@ -31,7 +34,7 @@ const AboutSection: React.FC = () => (
       </div>
 
       <div className="space-y-10 md:space-y-12 lg:pt-16">
-        {PROGRAMS.map((p, i) => (
+        {programs.map((p, i) => (
           <div key={p.title}>
             <span className={`block mb-4 text-xs font-semibold uppercase tracking-[0.14em] ${EYEBROW_COLOURS[i % 3]}`}>
               {p.when}
@@ -44,5 +47,6 @@ const AboutSection: React.FC = () => (
     </div>
   </section>
 );
+};
 
 export default AboutSection;

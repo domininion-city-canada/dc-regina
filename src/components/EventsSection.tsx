@@ -2,9 +2,17 @@ import React from 'react';
 import { Calendar, MapPin } from 'lucide-react';
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { EVENTS } from '@/data/site';
+import { useCurrent } from '@/lib/dated';
 
-/** Upcoming events: each flyer opens full size, details beside it. */
-const EventsSection: React.FC<{ heading?: boolean }> = ({ heading = true }) => (
+/**
+ * Upcoming events: each flyer opens full size, details beside it. Past events
+ * drop off on their own; with none left the home page skips the section and
+ * the events page says so.
+ */
+const EventsSection: React.FC<{ heading?: boolean }> = ({ heading = true }) => {
+  const events = useCurrent(EVENTS);
+  if (events.length === 0 && heading) return null;
+  return (
   <section id="events-section" className="section-padding bg-background">
     <div className="container mx-auto">
       {heading && (
@@ -17,7 +25,12 @@ const EventsSection: React.FC<{ heading?: boolean }> = ({ heading = true }) => (
       )}
 
       <div className="grid md:grid-cols-2 gap-px bg-foreground/10 border border-foreground/10">
-        {EVENTS.map((e) => (
+        {events.length === 0 && (
+          <p className="md:col-span-2 bg-background p-7 md:p-8 text-foreground/60">
+            No special events right now. Our weekly programs are below.
+          </p>
+        )}
+        {events.map((e) => (
           <article key={e.title} className="flex flex-col bg-background">
             <Dialog>
               <DialogTrigger asChild>
@@ -55,6 +68,7 @@ const EventsSection: React.FC<{ heading?: boolean }> = ({ heading = true }) => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default EventsSection;

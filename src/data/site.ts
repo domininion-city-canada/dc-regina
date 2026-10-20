@@ -10,6 +10,8 @@
  * fields everywhere.
  */
 
+import type { Dated } from '@/lib/dated';
+
 export const SITE = {
   name: 'Dominion City Regina',
   shortName: 'Dominion City',
@@ -69,22 +71,25 @@ export const GIVING = {
   },
 } as const;
 
-export type Program = { title: string; when: string; text: string };
+export type Program = Dated & { title: string; when: string; text: string };
 
 export const PROGRAMS: Program[] = [
   {
     title: 'Sunday Service',
     when: 'Every Sunday · 10:00 AM',
+    ends: null,
     text: 'A weekly gathering for prayer, worship, biblical teaching, and spiritual growth.',
   },
   {
     title: "Believers' Circle",
     when: 'Every Friday · 6:30 PM',
+    ends: null,
     text: 'Small-group fellowship across East Regina, West Regina, and Moose Jaw.',
   },
   {
     title: 'Foundation School',
     when: 'Saturdays in October · Online · 6:45–9:00 AM',
+    ends: '2026-10-31',
     text: 'Know your faith, know your church, discover your place.',
   },
 ];
@@ -101,13 +106,15 @@ export const CIRCLES: Circle[] = [
   maps: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.address)}`,
 }));
 
-export type ChurchEvent = { title: string; sub: string; when: string; where: string; img: string };
+/** See src/lib/dated.ts: `ends` is the event's last day, read off its flyer. */
+export type ChurchEvent = Dated & { title: string; sub: string; when: string; where: string; img: string };
 
 export const EVENTS: ChurchEvent[] = [
   {
     title: 'Divine Acceleration',
     sub: 'with Pastor Kenneth Emeana · Prayer, Word, Worship',
     when: 'Sunday, October 25, 2026 · 10:00 AM',
+    ends: '2026-10-25',
     where: '2144B Broad Street, Regina',
     img: '/media/divine-acceleration.jpg',
   },
@@ -115,6 +122,7 @@ export const EVENTS: ChurchEvent[] = [
     title: 'Dominion City Academy: Basic',
     sub: 'Saturdays, Oct 3 – Nov 7, 2026 · 8–10 AM',
     when: 'Saturdays · Oct 3 – Nov 7, 2026',
+    ends: '2026-11-07',
     where: 'Dominion City Regina',
     img: '/media/dca-basic.jpg',
   },

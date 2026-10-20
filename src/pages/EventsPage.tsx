@@ -5,12 +5,15 @@ import SEO from '@/components/SEO';
 import EventsSection from '@/components/EventsSection';
 import CirclesSection from '@/components/CirclesSection';
 import { PROGRAMS } from '@/data/site';
+import { useCurrent } from '@/lib/dated';
 
-const EventsPage = () => (
+const EventsPage = () => {
+  const programs = useCurrent(PROGRAMS);
+  return (
   <Page>
     <SEO
       title="Events & Programs"
-      description="Upcoming events at Dominion City Regina, plus Sunday Service, Believers' Circle on Fridays and Foundation School."
+      description="Upcoming events at Dominion City Regina, plus Sunday Service and Believers' Circle on Fridays."
     />
     <PageIntro eyebrow="Gatherings" title="Events &" accent="programs" />
     <EventsSection heading={false} />
@@ -22,7 +25,7 @@ const EventsPage = () => (
           Ongoing <span className="serif-italic text-accent-blue">programs</span>
         </h2>
         <div className="grid md:grid-cols-3 gap-px bg-foreground/10 border border-foreground/10">
-          {PROGRAMS.map((p) => (
+          {programs.map((p) => (
             <article key={p.title} className="bg-background p-7 md:p-8">
               <span className="mb-5 block text-xs font-semibold uppercase tracking-[0.14em] text-accent-blue">{p.when}</span>
               <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-3">{p.title}</h3>
@@ -36,5 +39,6 @@ const EventsPage = () => (
     <CirclesSection id="circles" />
   </Page>
 );
+};
 
 export default EventsPage;
