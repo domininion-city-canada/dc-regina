@@ -1,18 +1,430 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-  --color-background: #0f1729;
-  --color-card: #131d34;
-  --color-muted: #1b2744;
-  --color-muted-foreground: #9ca3af;
-  --color-primary: #3b82f6;
-  --color-gold: #f5b82e;
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-serif: "Playfair Display", Georgia, serif;
+@layer base {
+  :root {
+    /* Editorial navy palette */
+    --background: 222 47% 11%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 222 47% 14%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 222 47% 14%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 222 47% 18%;
+    --muted-foreground: 220 9% 65%;
+
+    --accent-coral: 351 95% 71%;   /* rose-400 #FB7185 */
+    --accent-yellow: 45 93% 57%;   /* amber-400 #FBBF24 */
+    --accent-blue: 217 91% 60%;    /* blue-500 #3B82F6 */
+    --accent-indigo: 239 84% 67%;  /* indigo-500 */
+    --accent-cream: 40 30% 95%;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 100% / 0.1;
+    --input: 222 47% 25%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.25rem;
+
+    /* The logo's heart blue, sampled (#003699). The logo is white on navy and
+       this colour on the light theme. */
+    --heart: 219 100% 30%;
+    --logo: 0 0% 100%;
+
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 45 93% 57%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 222 47% 20%;
+    --sidebar-ring: 217 91% 60%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 0 0% 100%;
+    --card: 222 47% 14%;
+    --card-foreground: 0 0% 100%;
+    --muted-foreground: 220 9% 65%;
+  }
+
+  .light {
+    /* Warm stone rather than paper white, and accents one step deeper so
+       small type stays legible on it (2026-10-20). */
+    /* Warm stone rather than paper white, and accents one step deeper so
+       small type stays legible on it (2026-10-20). */
+    --logo: var(--heart);
+    --background: 40 14% 93%;
+    --foreground: 222 47% 9%;
+    --card: 40 20% 97%;
+    --card-foreground: 222 47% 9%;
+    --secondary: 40 12% 89%;
+    --muted: 40 10% 87%;
+    --muted-foreground: 222 15% 32%;
+    --border: 222 25% 15% / 0.14;
+    --popover: 40 20% 97%;
+    --popover-foreground: 222 47% 9%;
+    --secondary-foreground: 222 47% 9%;
+    --input: 40 10% 82%;
+    --primary: 221 83% 48%;
+    --accent: 221 83% 48%;
+    --accent-blue: 221 83% 48%;
+    --accent-coral: 347 77% 46%;
+    --accent-indigo: 243 62% 52%;
+    --accent-yellow: 32 95% 36%;
+    --ring: 221 83% 48%;
+  }
 }
 
-html { scroll-behavior: smooth; }
-body { background: var(--color-background); color: #fff; font-family: var(--font-sans); }
-.section-pad { padding: 5rem 1.25rem; }
-@media (min-width: 768px) { .section-pad { padding: 7rem 2rem; } }
-.eyebrow { font-size: .72rem; letter-spacing: .3em; text-transform: uppercase; color: var(--color-primary); }
+@layer base {
+  * { @apply border-border; }
+  .logo-mark { color: hsl(var(--logo)); }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-light tracking-tight;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .serif-italic {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  button, a { -webkit-tap-highlight-color: transparent; }
+
+  /* Tap highlight is off, so touch devices get an explicit pressed state —
+     otherwise a tap looks like nothing happened until the page changes. */
+  @media (hover: none) {
+    a:active, button:active, [role='button']:active { opacity: 0.65; }
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    /* `overscroll-behavior-y: none` used to live here. It also kills
+       pull-to-refresh on Android Chrome, which readers expect to work. */
+  }
+
+  body {
+    /* Belt-and-braces against a stray wide child scrolling the whole page
+       sideways on a phone. */
+    overflow-x: hidden;
+  }
+
+  /* The fixed header sits under the status bar once viewport-fit=cover is on. */
+  /* The header is fixed at 4rem (5rem from md up), so a section scrolled to
+     the top of the viewport would sit underneath it. Applies to native hash
+     jumps as well as scrollIntoView. */
+  section[id],
+  [id][data-scroll-anchor] {
+    scroll-margin-top: 5rem;
+  }
+
+  .safe-top    { padding-top: env(safe-area-inset-top, 0px); }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: hsl(var(--background)); }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(0 0% 100% / 0.15);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(var(--accent-blue) / 0.5); }
+}
+
+@layer components {
+  /* ── Editorial eyebrow label ── */
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.35em] text-foreground/50;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply block w-8 h-px bg-accent-yellow;
+  }
+  .eyebrow-blue::before   { @apply bg-accent-blue; }
+  .eyebrow-coral::before  { @apply bg-accent-coral; }
+  .eyebrow-indigo::before { @apply bg-accent-indigo; }
+
+  /* Legacy label chips — kept simplified for backward compat */
+  .nb-label,
+  .nb-label-blue,
+  .nb-label-coral,
+  .nb-label-yellow,
+  .sticker-badge,
+  .sticker-badge-coral,
+  .sticker-badge-yellow,
+  .sticker-badge-blue {
+    @apply eyebrow;
+  }
+  .nb-label-blue   { @apply eyebrow-blue; }
+  .nb-label-coral  { @apply eyebrow-coral; }
+  .nb-label-yellow { }
+  .sticker-badge-blue  { @apply eyebrow-blue; }
+  .sticker-badge-coral { @apply eyebrow-coral; }
+
+  /* ── Editorial headline ── */
+  .headline {
+    @apply font-light leading-[1.05] tracking-tight text-foreground;
+  }
+
+  /* ── Quiet card ── */
+  .nb-card {
+    @apply bg-transparent border border-foreground/10 p-6 transition-all duration-300;
+  }
+  .nb-card-hover {
+    @apply nb-card hover:border-foreground/30;
+  }
+  .card-brutal {
+    @apply nb-card p-6 md:p-8;
+  }
+
+  /* ── Buttons ── */
+  .btn-nb {
+    @apply relative inline-flex items-center justify-center gap-2 px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] transition-all duration-300;
+  }
+
+  .btn-nb-primary {
+    @apply btn-nb bg-accent-blue text-white hover:bg-accent-blue/90;
+  }
+
+  .btn-nb-outline {
+    @apply btn-nb bg-transparent border border-foreground/20 text-foreground hover:bg-foreground/5 hover:border-foreground/40;
+  }
+
+  .btn-nb-coral {
+    @apply btn-nb bg-accent-coral text-white hover:bg-accent-coral/90;
+  }
+
+  .btn-nb-yellow {
+    @apply btn-nb bg-accent-yellow text-background hover:bg-accent-yellow/90;
+  }
+
+  /* Underlined text link — used across the site */
+  .btn-nb-link {
+    @apply relative inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground border-b border-foreground/20 pb-1 hover:border-foreground transition-all;
+  }
+
+  /* The rule above draws a ~22px-tall link. On a touch screen that is half a
+     usable target, so widen the hit area with a pseudo-element instead of
+     padding — padding would push the underline away from the text. */
+  .touch-target {
+    @apply relative;
+  }
+  @media (pointer: coarse) {
+    .btn-nb-link::after,
+    .touch-target::after {
+      content: '';
+      position: absolute;
+      inset: -14px -10px;
+    }
+  }
+
+  /* Desktop reveals these on hover. A touch device never hovers, so without
+     the media query every flyer and thumbnail stays greyed out for good. */
+  .hover-reveal {
+    transition: filter 700ms, opacity 700ms, transform 700ms;
+  }
+  .hover-saturate {
+    transition: filter 700ms ease-in-out;
+  }
+
+  /* backwards compat */
+  .btn-brutal { @apply btn-nb-outline; }
+  .btn-brutal-coral { @apply btn-nb-coral; }
+  .btn-brutal-yellow { @apply btn-nb-yellow; }
+  .btn-brutal-blue { @apply btn-nb-primary; }
+
+  /* 100vh on mobile is the address-bar-hidden height, so a full-height hero
+     hides its own bottom strip until you scroll. svh is the visible box. */
+  .h-viewport {
+    height: 100vh;
+    height: 100svh;
+  }
+
+  /* Section padding */
+  .section-padding { @apply py-24 md:py-32; }
+
+  .container { @apply px-6 md:px-12 lg:px-20; }
+
+  /* In landscape on a notched phone the gutter has to clear the sensor housing,
+     so take whichever is larger: the design gutter or the safe-area inset. */
+  @supports (padding: max(0px)) {
+    .container {
+      padding-left: max(1.5rem, env(safe-area-inset-left, 0px));
+      padding-right: max(1.5rem, env(safe-area-inset-right, 0px));
+    }
+    @media (min-width: 768px) {
+      .container {
+        padding-left: max(3rem, env(safe-area-inset-left, 0px));
+        padding-right: max(3rem, env(safe-area-inset-right, 0px));
+      }
+    }
+    @media (min-width: 1024px) {
+      .container {
+        padding-left: max(5rem, env(safe-area-inset-left, 0px));
+        padding-right: max(5rem, env(safe-area-inset-right, 0px));
+      }
+    }
+  }
+
+  /* Thin rule */
+  .section-rule {
+    @apply w-10 h-px bg-accent-blue mb-6;
+  }
+
+  .text-off-white { color: rgba(255, 255, 255, 0.7); }
+}
+
+/* ── Animations ── */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes ken-burns {
+  from { transform: scale(1); }
+  to   { transform: scale(1.08); }
+}
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes blob-morph {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50%      { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+}
+
+.animate-fade-in-up  { animation: fade-in-up 0.8s ease-out forwards; opacity: 0; }
+.animate-fade-in     { animation: fade-in 0.8s ease-out forwards; }
+.animate-ken-burns   { animation: ken-burns 20s ease-out forwards; }
+
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.25s; }
+.stagger-3 { animation-delay: 0.4s; }
+.stagger-4 { animation-delay: 0.55s; }
+.stagger-5 { animation-delay: 0.7s; }
+
+/* Mobile */
+@media (max-width: 768px) {
+  /* Centred dialogs only. Side sheets and bottom drawers set their own
+     height, and this rule used to shrink the slide-out nav to 90% of the
+     screen with the page showing underneath. */
+  [role="dialog"]:not([data-sheet]):not([data-drawer]):not([data-vaul-drawer]) {
+    @apply max-h-[90dvh] overflow-y-auto;
+  }
+  body.modal-open { overflow: hidden; position: fixed; width: 100%; }
+  /* Anything under 16px makes iOS Safari zoom the page on focus. */
+  input, textarea, select { font-size: 16px !important; }
+}
+
+/* Pointer-based rather than width-based: a 48px minimum only matters where
+   the pointer is a finger. Written as plain CSS because `.btn-nb` is itself
+   @apply-ed by the button variants, and Tailwind cannot copy a media-nested
+   rule into those. */
+@media (pointer: coarse) {
+  .btn-nb,
+  .btn-nb-primary,
+  .btn-nb-outline,
+  .btn-nb-coral,
+  .btn-nb-yellow,
+  .btn-brutal,
+  .btn-brutal-coral,
+  .btn-brutal-yellow,
+  .btn-brutal-blue {
+    min-height: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Hover-only image treatments. Guarded so touch devices, which never fire
+   :hover, are not left staring at permanently desaturated artwork. */
+@media (hover: hover) {
+  .hover-reveal {
+    filter: grayscale(1);
+    opacity: 0.8;
+  }
+  .group:hover .hover-reveal {
+    filter: grayscale(0);
+    opacity: 1;
+    transform: scale(1.02);
+  }
+  .hover-saturate {
+    filter: saturate(0);
+  }
+  .group:hover .hover-saturate {
+    filter: saturate(1);
+  }
+}
+
+/* ── Light theme legibility ──
+   The template's opacity steps were tuned for white on navy. On a light
+   page the same steps (foreground/30–/70 at 10–11px) wash out: labels, nav
+   links and footer meta were close to unreadable (owner, 2026-10-20). Each
+   step is raised to a floor in light mode only; :not(:hover) leaves every
+   hover:text-foreground state working. */
+.light .text-foreground\/30:not(:hover),
+.light .text-foreground\/35:not(:hover) { color: hsl(var(--foreground) / 0.56); }
+.light .text-foreground\/40:not(:hover),
+.light .text-foreground\/45:not(:hover) { color: hsl(var(--foreground) / 0.62); }
+.light .text-foreground\/50:not(:hover),
+.light .text-foreground\/55:not(:hover) { color: hsl(var(--foreground) / 0.68); }
+.light .text-foreground\/60:not(:hover),
+.light .text-foreground\/65:not(:hover) { color: hsl(var(--foreground) / 0.74); }
+.light .text-foreground\/70:not(:hover) { color: hsl(var(--foreground) / 0.8); }
+.light .eyebrow { color: hsl(var(--foreground) / 0.66); }
+/* Hero photos sit at 40% under background-coloured gradients: on navy that
+   reads as a moody photo, on stone it read as a white wash. */
+.light .animate-ken-burns { opacity: 0.7; }
+
+/* Cream sections are a light surface in both themes (their colours are fixed
+   in the markup), so they take the deeper accents too: the bright dark-theme
+   amber and coral on cream measured 1.5:1 and 2.6:1. */
+.bg-\[hsl\(40_20\%_97\%\)\] {
+  --accent-blue: 221 83% 48%;
+  --accent-coral: 347 77% 46%;
+  --accent-indigo: 243 62% 52%;
+  --accent-yellow: 32 95% 36%;
+}
+
+/* Keyboard focus. The template had none, so tabbing through the menus,
+   buttons and forms showed no position at all. :focus-visible keeps mouse
+   and touch clicks free of the ring. */
+:focus-visible {
+  outline: 2px solid hsl(var(--accent-blue));
+  outline-offset: 3px;
+}

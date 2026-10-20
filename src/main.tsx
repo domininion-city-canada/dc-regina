@@ -1,13 +1,16 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import App from "./App";
-import "./index.css";
+import { createRoot } from 'react-dom/client'
+import { ThemeProvider } from './contexts/ThemeContext'
+import App from './App.tsx'
+import '@fontsource/inter/300.css'
+import '@fontsource/inter/400.css'
+import '@fontsource/inter/500.css'
+import '@fontsource/inter/600.css'
+import '@fontsource/playfair-display/400-italic.css'
+import '@fontsource/playfair-display/600-italic.css'
+import './index.css'
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </StrictMode>,
+  <ThemeProvider>
+    <App />
+  </ThemeProvider>
 );

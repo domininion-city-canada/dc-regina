@@ -1,0 +1,8 @@
+# Public routes only. The sitemap is generated from this file, so the two
+# cannot drift.
+/
+/about
+/events
+/give
+/find-us
+/contact

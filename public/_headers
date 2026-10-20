@@ -1,0 +1,46 @@
+# Cloudflare Pages response headers.
+#
+# The CSP ships as Report-Only on purpose. This site loads third-party
+# embeds (YouTube, Google Maps) and posts forms to FormSubmit, and carries an inline
+# JSON-LD block, and a policy that is merely *close* to correct fails silently:
+# the browser drops the resource with no visible error in the page. Read the
+# reports from the deployed URL — not localhost, which proves nothing about
+# what the edge actually serves — then promote to `Content-Security-Policy`.
+#
+# Before promoting, two things must be settled:
+#
+#   * `script-src` gates <script> elements of every type, including
+#     `application/ld+json`. Enforcing this policy as written would drop the
+#     structured data in index.html and cost the church its rich results. Add
+#     that block's sha256 to `script-src` first. (/theme-init.js is a real
+#     file, so 'self' already covers it.)
+#   * Add `upgrade-insecure-requests` back. It is omitted below because the
+#     spec says it is ignored in a report-only policy, and Chrome logs an
+#     error saying so — twice on every page load, for every visitor, drowning
+#     out the reports this policy exists to collect.
+
+/*
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
+  Cross-Origin-Opener-Policy: same-origin
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; media-src 'self'; connect-src 'self'; frame-src https://www.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'
+
+# Vite fingerprints everything in /assets, so the filename changes whenever the
+# content does. These can be cached forever.
+# Browsers may keep them forever, but Cloudflare's shared cache must not: during a
+# deploy an asset request can briefly fall through to the SPA fallback, and a
+# year-long edge cache would then serve index.html as the JS bundle to everyone
+# on that edge.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+  Cloudflare-CDN-Cache-Control: no-store
+
+# Images keep their names across deploys, so they get a day rather than a year.
+/media/*
+  Cache-Control: public, max-age=86400
+# head-boot.js keeps its name across deploys: short cache, never immutable.
+/head-boot.js
+  Cache-Control: public, max-age=300, must-revalidate

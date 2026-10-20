@@ -1,23 +1,113 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="DC Regina" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    
     <title>Dominion City Regina | Raising Leaders That Transform Society</title>
-    <meta name="description" content="Dominion City Regina: Sunday worship at 10:00 AM, 2144B Broad Street, Regina, SK. Believers' Circle in East Regina, West Regina and Moose Jaw." />
-    <meta property="og:title" content="Dominion City Regina" />
-    <meta property="og:description" content="Raising leaders that transform society. Sundays at 10:00 AM, 2144B Broad Street, Regina." />
-    <meta property="og:image" content="/images/dominion-city-regina-banner.jpg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet" />
+    <meta name="keywords" content="church, Regina, Saskatchewan, Moose Jaw, Christianity, worship, community, Dominion City" />
+    <meta name="author" content="Dominion City Regina" />
+
+    <!-- No description, canonical, robots, og:type/title/description/url, or
+         twitter:card/title/description here: SEO.tsx sets all of these per
+         route through Helmet. A static copy in this file would appear
+         alongside Helmet's on every page — every prerendered page would carry
+         this generic home-page description/title under the real per-page one,
+         which search engines read in document order. Two canonicals naming
+         different URLs is worse than none: a crawler that finds conflicting
+         canonicals discards both. Only tags Helmet never sets stay static. -->
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:image" content="https://dominioncityregina.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Dominion City Regina: raising leaders that transform society. Sundays 10:00 AM at 2144B Broad Street." />
+    <meta property="og:site_name" content="Dominion City Regina" />
+    <meta property="og:locale" content="en_CA" />
+
+    <!-- Twitter -->
+    <meta name="twitter:image" content="https://dominioncityregina.com/og-image.jpg" />
+    <meta name="twitter:url" content="https://dominioncityregina.com/" />
+
+    <!-- Additional SEO -->
+    <meta name="geo.region" content="CA-SK" />
+    <meta name="geo.placename" content="Regina" />
+    <meta name="geo.position" content="50.4446;-104.6111" />
+    <meta name="ICBM" content="50.4446, -104.6111" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f0eeea" media="(prefers-color-scheme: light)" />
+
+    <!-- Structured Data -->
     <script type="application/ld+json">
-      {"@context":"https://schema.org","@type":"Church","name":"Dominion City Regina","address":{"@type":"PostalAddress","streetAddress":"2144B Broad Street","addressLocality":"Regina","addressRegion":"SK","postalCode":"S4P 1Y5","addressCountry":"CA"},"telephone":"+1 (639) 997-1522","openingHours":"Su 10:00-12:00","sameAs":["https://www.instagram.com/dominioncityregina"]}
+    {
+      "@context": "https://schema.org",
+      "@type": "Church",
+      "name": "Dominion City Regina",
+      "description": "A Dominion City church in Regina, Saskatchewan, raising leaders that transform society.",
+      "url": "https://dominioncityregina.com/",
+      "logo": "https://dominioncityregina.com/apple-touch-icon.png",
+      "image": "https://dominioncityregina.com/og-image.jpg",
+      "telephone": "+1-639-997-1522",
+      "email": "dcregina@dominioncitycanada.org",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2144B Broad Street",
+        "addressLocality": "Regina",
+        "addressRegion": "SK",
+        "postalCode": "S4P 1Y5",
+        "addressCountry": "CA"
+      },
+      "openingHours": "Su 10:00-12:00",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "Dominion City Canada",
+        "url": "https://dominioncitycanada.org/"
+      },
+      "sameAs": [
+        "https://www.instagram.com/dominioncityregina"
+      ]
+    }
     </script>
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    <!-- Sets the theme class on <html> and preloads the hero on the home
+         page, both before the first paint. Must stay above the critical CSS
+         and must not be deferred. -->
+    <script src="/head-boot.js"></script>
+
+    <!-- Critical inline CSS -->
+    <style>
+      /* Only what is needed to paint the first frame in the right colours.
+         The full token set lives in index.css; these two must agree with the
+         .dark and .light blocks there. */
+      html.dark  { --pre-bg: hsl(222 47% 11%); --pre-fg: hsl(0 0% 100%); }
+      html.light { --pre-bg: hsl(40 14% 93%); --pre-fg: hsl(222 47% 9%); }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        /* Inter, not Satoshi: Satoshi is not installed anywhere in this
+           project, so naming it here painted the first frame in the system
+           font and then swapped to Inter once the bundle arrived. */
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        background-color: var(--pre-bg, hsl(222 47% 11%));
+        color: var(--pre-fg, hsl(0 0% 100%));
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+      #root { min-height: 100vh; min-height: 100svh; }
+      body { overflow-x: hidden; }
+    </style>
+    
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>

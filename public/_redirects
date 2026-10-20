@@ -1,0 +1,5 @@
+# Cloudflare Pages. Every public route is prerendered to its own static file
+# by scripts/prerender.mjs (dist/<route>.html), which Pages serves natively,
+# and the build emits a real dist/404.html, so no SPA catch-all belongs here:
+# a `/* /index.html 200` rewrite would hide the prerendered pages and turn
+# every unknown URL into a soft 404.

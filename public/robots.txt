@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dominioncityregina.com/sitemap.xml

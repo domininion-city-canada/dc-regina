@@ -1,32 +1,11 @@
-# React + TypeScript + Vite
+# Dominion City Regina
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+dominioncityregina.com, built on the Dominion City (Brampton) template shared
+by every Dominion City Canada site. Start from `dc-mississauga` and the
+`dc-skill` brand repo for anything new.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+- Facts, nav and copy: `src/data/site.ts` (also repeated in `index.html` JSON-LD and `public/llms.txt`).
+- Hosting: Cloudflare Pages project `dc-regina`, building `main` with `npm run build`
+  (Vite, then `scripts/prerender.mjs` saves every route in `seo/routes.txt` as HTML,
+  writes `dist/sitemap.xml` and a real `dist/404.html`).
+- Hero photo: Wascana Lake by Haydn Blackey, CC BY-SA 2.0 (credited in the footer).
