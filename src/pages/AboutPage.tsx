@@ -42,11 +42,11 @@ const AboutPage = () => (
         <div className="lg:col-span-6 border-t border-foreground/10">
           {VALUES.map((v, i) => (
             <div key={v.title} className="border-b border-foreground/10 py-8">
-              <span className="mb-4 block text-[10px] font-semibold uppercase tracking-[0.3em] text-foreground/40 tabular-nums">
+              <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.14em] text-foreground/65 tabular-nums">
                 0{i + 1}
               </span>
-              <h2 className="text-2xl md:text-3xl font-light tracking-tight mb-3">{v.title}</h2>
-              <p className="text-base font-light leading-relaxed text-foreground/60">{v.text}</p>
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-3">{v.title}</h2>
+              <p className="text-base font-normal leading-relaxed text-foreground/60">{v.text}</p>
             </div>
           ))}
         </div>

@@ -33,25 +33,25 @@ class ErrorBoundary extends React.Component<Props, State> {
           <h1 className="headline mb-4 text-3xl md:text-4xl">
             This page didn't load properly.
           </h1>
-          <p className="mx-auto max-w-md text-base font-light leading-relaxed text-foreground/60">
+          <p className="mx-auto max-w-md text-base font-normal leading-relaxed text-foreground/60">
             Sorry about that. Reloading usually fixes it. In the meantime, here is the part you
             probably came for.
           </p>
         </div>
 
-        <dl className="flex flex-col gap-3 text-sm font-light">
+        <dl className="flex flex-col gap-3 text-sm font-normal">
           <div>
-            <dt className="text-[10px] uppercase tracking-[0.25em] text-foreground/40">Sundays</dt>
+            <dt className="text-xs uppercase tracking-[0.14em] text-foreground/65">Sundays</dt>
             <dd className="text-foreground/80">{SERVICE_TIME}</dd>
           </div>
           <div>
-            <dt className="text-[10px] uppercase tracking-[0.25em] text-foreground/40">Where</dt>
+            <dt className="text-xs uppercase tracking-[0.14em] text-foreground/65">Where</dt>
             <dd className="text-foreground/80">
               {ADDRESS.line1}, {ADDRESS.line2}
             </dd>
           </div>
           <div>
-            <dt className="text-[10px] uppercase tracking-[0.25em] text-foreground/40">Email us</dt>
+            <dt className="text-xs uppercase tracking-[0.14em] text-foreground/65">Email us</dt>
             <dd>
               <a className="text-accent-blue hover:underline break-all" href={`mailto:${CONTACT.email}`}>
                 {CONTACT.email}

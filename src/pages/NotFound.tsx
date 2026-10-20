@@ -26,10 +26,10 @@ const NotFound = () => {
         index={false}
       />
       <span className="eyebrow mb-8">404</span>
-      <h1 className="mb-4 text-4xl font-light leading-tight tracking-tight sm:text-5xl">
+      <h1 className="mb-4 text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
         We couldn't find that <span className="serif-italic text-accent-blue">page</span>.
       </h1>
-      <p className="mb-10 max-w-sm text-base font-light leading-relaxed text-foreground/60">
+      <p className="mb-10 max-w-sm text-base font-normal leading-relaxed text-foreground/60">
         The link may be out of date. Everything else is still where you left it.
       </p>
       <div className="flex w-full max-w-xs flex-col gap-4">

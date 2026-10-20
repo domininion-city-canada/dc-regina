@@ -10,7 +10,7 @@ const EventsSection: React.FC<{ heading?: boolean }> = ({ heading = true }) => (
       {heading && (
         <div className="mb-16 max-w-2xl">
           <span className="eyebrow eyebrow-coral mb-6 block">Upcoming</span>
-          <h2 className="text-4xl md:text-6xl font-light tracking-tight leading-[1.05]">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.05]">
             What's <span className="serif-italic text-accent-blue">happening</span>
           </h2>
         </div>
@@ -41,12 +41,12 @@ const EventsSection: React.FC<{ heading?: boolean }> = ({ heading = true }) => (
               </DialogContent>
             </Dialog>
             <div className="p-7 md:p-8">
-              <h3 className="text-2xl md:text-3xl font-light tracking-tight mb-2">{e.title}</h3>
-              <p className="text-sm font-light text-foreground/60 mb-6">{e.sub}</p>
-              <p className="flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-accent-blue mb-2">
+              <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">{e.title}</h3>
+              <p className="text-sm font-normal text-foreground/60 mb-6">{e.sub}</p>
+              <p className="flex items-center gap-2 text-xs uppercase tracking-[0.1em] text-accent-blue mb-2">
                 <Calendar className="w-3.5 h-3.5" aria-hidden /> {e.when}
               </p>
-              <p className="flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-foreground/50">
+              <p className="flex items-center gap-2 text-xs uppercase tracking-[0.1em] text-foreground/70">
                 <MapPin className="w-3.5 h-3.5" aria-hidden /> {e.where}
               </p>
             </div>

@@ -14,7 +14,7 @@ const PageIntro: React.FC<{ eyebrow: string; title: string; accent: string; chil
         {title} <span className="serif-italic text-accent-blue">{accent}</span>
       </h1>
       {children && (
-        <div className="mt-6 max-w-2xl text-lg md:text-xl font-light leading-relaxed text-foreground/60 animate-fade-in-up stagger-3">
+        <div className="mt-6 max-w-2xl text-lg md:text-xl font-normal leading-relaxed text-foreground/60 animate-fade-in-up stagger-3">
           {children}
         </div>
       )}

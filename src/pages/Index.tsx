@@ -8,6 +8,7 @@ import GoogleMapEmbed from '@/components/GoogleMapEmbed';
 import GiveSection from '@/components/GiveSection';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
+import ServiceEvents from '@/components/ServiceEvents';
 import { ADDRESS, SERVICE_TIME, SITE } from '@/data/site';
 
 const Index = () => (
@@ -16,6 +17,7 @@ const Index = () => (
       title="A Church in Regina, Saskatchewan"
       description={`${SITE.name}: Sunday worship at ${SERVICE_TIME}, ${ADDRESS.street}, Regina, SK. Believers' Circle on Fridays in East Regina, West Regina and Moose Jaw.`}
     />
+    <ServiceEvents />
     <Header />
     <main className="flex-grow" id="home">
       <Hero />

@@ -52,7 +52,7 @@ const Hero: React.FC = () => (
     {/* Bottom info strip */}
     <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-foreground/10 bg-background/60 backdrop-blur-sm">
       <div className="container mx-auto py-5 md:py-6 safe-bottom flex flex-col md:flex-row items-start md:items-center justify-between gap-3 md:gap-4">
-        <div className="flex flex-wrap gap-x-12 gap-y-2 text-[11px] md:text-[10px] uppercase tracking-[0.18em] md:tracking-[0.25em] font-medium text-foreground/50">
+        <div className="flex flex-wrap gap-x-12 gap-y-2 text-xs md:text-xs uppercase tracking-[0.1em] md:tracking-[0.14em] font-medium text-foreground/70">
           <div>
             <span className="text-accent-blue">Sundays</span>
             <span className="ml-2 md:ml-3 text-foreground/80">{SERVICE_TIME}</span>
@@ -70,7 +70,7 @@ const Hero: React.FC = () => (
             </span>
           </Link>
         </div>
-        <span className="hidden md:inline text-[10px] uppercase tracking-[0.3em] text-foreground/30">
+        <span className="hidden md:inline text-xs uppercase tracking-[0.14em] text-foreground/60">
           Scroll ↓
         </span>
       </div>

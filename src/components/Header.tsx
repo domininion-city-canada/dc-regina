@@ -124,10 +124,10 @@ const NavMenu = ({ group, triggerClass }: { group: NavGroup; triggerClass: strin
           <NavLink item={item}>
             <span className="flex w-full items-center gap-1.5 text-sm font-medium text-foreground">
               {item.name}
-              {item.external && <ArrowUpRight className="h-3 w-3 text-foreground/30" aria-hidden="true" />}
+              {item.external && <ArrowUpRight className="h-3 w-3 text-foreground/60" aria-hidden="true" />}
             </span>
             {item.blurb && (
-              <span className="text-xs font-light leading-snug text-foreground/50">{item.blurb}</span>
+              <span className="text-xs font-normal leading-snug text-foreground/70">{item.blurb}</span>
             )}
           </NavLink>
         </DropdownMenuItem>
@@ -153,7 +153,7 @@ const Header: React.FC = () => {
   useEffect(() => setSheetOpen(false), [location.pathname]);
 
   const navLinkClass =
-    'text-[10px] uppercase tracking-[0.25em] font-medium text-foreground/50 hover:text-foreground transition-colors';
+    'text-xs uppercase tracking-[0.14em] font-medium text-foreground/70 hover:text-foreground transition-colors';
 
   return (
     <header
@@ -164,7 +164,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto h-16 md:h-20 flex items-center justify-between gap-4">
         <Link to="/" className="-ml-1 flex min-h-11 shrink-0 items-center gap-3 py-1 pl-1 pr-2 group">
           <Logo title={`${SITE.name} logo`} className="h-9 md:h-11 w-auto" />
-          <div className="text-[10px] tracking-[0.3em] font-medium uppercase text-foreground/80 hidden sm:block">
+          <div className="text-xs tracking-[0.14em] font-medium uppercase text-foreground/80 hidden sm:block">
             {SITE.locality}
           </div>
         </Link>
@@ -184,7 +184,7 @@ const Header: React.FC = () => {
         <div className="flex items-center gap-2 sm:gap-3">
           <NavLink
             item={NAV_CTA}
-            className="hidden items-center whitespace-nowrap border border-foreground/20 bg-foreground/5 px-6 py-3 text-[10px] font-semibold uppercase tracking-[0.2em] transition-all hover:bg-foreground/10 md:inline-flex"
+            className="hidden items-center whitespace-nowrap border border-foreground/20 bg-foreground/5 px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] transition-all hover:bg-foreground/10 md:inline-flex"
           >
             {NAV_CTA.name}
           </NavLink>
@@ -219,7 +219,7 @@ const Header: React.FC = () => {
             >
               <div className="flex flex-col min-h-full">
                 <div className="min-h-16 md:min-h-20 safe-top flex items-center justify-between px-6 md:px-10 border-b border-foreground/10 sticky top-0 bg-background z-10">
-                  <span className="text-[10px] tracking-[0.3em] uppercase text-foreground/50">Menu</span>
+                  <span className="text-xs tracking-[0.14em] uppercase text-foreground/70">Menu</span>
                   <button
                     onClick={() => setSheetOpen(false)}
                     className="-mr-2 w-11 h-11 flex items-center justify-center text-foreground/60 hover:text-foreground"
@@ -232,7 +232,7 @@ const Header: React.FC = () => {
                 <nav className="flex-1 px-6 md:px-10 py-8 md:py-10 flex flex-col gap-8 md:gap-10" aria-label="Main">
                   {NAV_GROUPS.map((group) => (
                     <div key={group.name}>
-                      <p className="text-[10px] uppercase tracking-[0.3em] text-foreground/35 mb-4">
+                      <p className="text-xs uppercase tracking-[0.14em] text-foreground/35 mb-4">
                         {group.name}
                       </p>
                       <div className="flex flex-col">
@@ -241,7 +241,7 @@ const Header: React.FC = () => {
                             key={item.name}
                             item={item}
                             onNavigate={() => setSheetOpen(false)}
-                            className="flex min-h-[44px] items-center gap-2 py-3 text-xl md:text-2xl font-light text-foreground/70 hover:text-foreground transition-colors tracking-tight"
+                            className="flex min-h-[44px] items-center gap-2 py-3 text-xl md:text-2xl font-bold text-foreground/70 hover:text-foreground transition-colors tracking-tight"
                           >
                             {item.name}
                             {item.external && (
@@ -254,14 +254,14 @@ const Header: React.FC = () => {
                   ))}
 
                   <div>
-                    <p className="text-[10px] uppercase tracking-[0.3em] text-foreground/35 mb-4">{NAV_GROUPS.length ? 'More' : 'Pages'}</p>
+                    <p className="text-xs uppercase tracking-[0.14em] text-foreground/35 mb-4">{NAV_GROUPS.length ? 'More' : 'Pages'}</p>
                     <div className="flex flex-col">
                       {NAV_SINGLES.map((item) => (
                         <NavLink
                           key={item.name}
                           item={item}
                           onNavigate={() => setSheetOpen(false)}
-                          className="flex min-h-[44px] items-center py-3 text-xl md:text-2xl font-light text-foreground/70 hover:text-foreground transition-colors tracking-tight"
+                          className="flex min-h-[44px] items-center py-3 text-xl md:text-2xl font-bold text-foreground/70 hover:text-foreground transition-colors tracking-tight"
                         >
                           {item.name}
                         </NavLink>

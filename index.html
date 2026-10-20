@@ -48,6 +48,7 @@
     {
       "@context": "https://schema.org",
       "@type": "Church",
+      "@id": "https://dominioncityregina.com/#org",
       "name": "Dominion City Regina",
       "description": "A Dominion City church in Regina, Saskatchewan, raising leaders that transform society.",
       "url": "https://dominioncityregina.com/",
@@ -93,10 +94,9 @@
       html.light { --pre-bg: hsl(40 14% 93%); --pre-fg: hsl(222 47% 9%); }
       * { box-sizing: border-box; margin: 0; padding: 0; }
       body {
-        /* Inter, not Satoshi: Satoshi is not installed anywhere in this
-           project, so naming it here painted the first frame in the system
-           font and then swapped to Inter once the bundle arrived. */
-        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        /* Must name the same face as index.css, or the first frame paints in
+           the system font and swaps when the bundle arrives. */
+        font-family: 'DM Sans Variable', 'DM Sans', system-ui, -apple-system, sans-serif;
         background-color: var(--pre-bg, hsl(222 47% 11%));
         color: var(--pre-fg, hsl(0 0% 100%));
         line-height: 1.5;

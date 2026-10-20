@@ -21,9 +21,9 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'sans': ['Inter', 'system-ui', 'sans-serif'],
-				'serif': ['"Playfair Display"', 'Georgia', 'serif'],
-				'satoshi': ['Inter', 'sans-serif'],
+				'sans': ['"DM Sans Variable"', '"DM Sans"', 'system-ui', 'sans-serif'],
+				'serif': ['"DM Serif Display"', 'Georgia', 'serif'],
+				'satoshi': ['"DM Sans Variable"', '"DM Sans"', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

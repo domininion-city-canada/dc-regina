@@ -14,11 +14,11 @@ const GoogleMapEmbed: React.FC = () => (
       <div className="mb-12 md:mb-16 grid lg:grid-cols-12 gap-8 items-end">
         <div className="lg:col-span-8">
           <span className="eyebrow eyebrow-coral mb-6 block">Visit Us</span>
-          <h2 className="text-4xl md:text-6xl font-light tracking-tight leading-[1.05]">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.05]">
             Find <span className="serif-italic text-accent-blue">us</span>.
           </h2>
         </div>
-        <p className="lg:col-span-4 text-base text-foreground/60 font-light leading-relaxed">
+        <p className="lg:col-span-4 text-base text-foreground/60 font-normal leading-relaxed">
           On Broad Street in Regina. Come for worship, the Word and fellowship.
         </p>
       </div>
@@ -26,12 +26,12 @@ const GoogleMapEmbed: React.FC = () => (
       {/* Hairline grid: the 1px gap shows the border colour between the panes. */}
       <div className="grid lg:grid-cols-12 gap-px bg-foreground/10 border border-foreground/10">
         <div className="lg:col-span-4 bg-background p-7 md:p-10 flex flex-col">
-          <span className="mb-5 text-[10px] font-semibold uppercase tracking-[0.3em] text-foreground/40">
+          <span className="mb-5 text-xs font-semibold uppercase tracking-[0.14em] text-foreground/65">
             Sunday Service
           </span>
-          <h3 className="text-2xl md:text-3xl font-light tracking-tight mb-2">{SITE.name}</h3>
-          <p className="text-[11px] uppercase tracking-[0.2em] text-accent-blue mb-6">Sundays · {SERVICE_TIME}</p>
-          <p className="text-sm md:text-base font-light leading-relaxed text-foreground/60 mb-10">
+          <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">{SITE.name}</h3>
+          <p className="text-xs uppercase tracking-[0.1em] text-accent-blue mb-6">Sundays · {SERVICE_TIME}</p>
+          <p className="text-sm md:text-base font-normal leading-relaxed text-foreground/60 mb-10">
             {ADDRESS.line1}
             <br />
             {ADDRESS.line2}

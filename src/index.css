@@ -14,7 +14,7 @@
     --popover: 222 47% 14%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 217 91% 60%;
+    --primary: 221 83% 53%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 222 47% 14%;
@@ -87,7 +87,7 @@
     --accent-blue: 221 83% 48%;
     --accent-coral: 347 77% 46%;
     --accent-indigo: 243 62% 52%;
-    --accent-yellow: 32 95% 36%;
+    --accent-yellow: 30 95% 32%;
     --ring: 221 83% 48%;
   }
 }
@@ -98,21 +98,27 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
-    font-weight: 300;
+    font-family: 'DM Sans Variable', 'DM Sans', system-ui, sans-serif;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* DM Sans at 700 for headings (owner, 2026-10-20: the Inter Light
+     headlines were not clear or bold enough). The optical-size axis keeps
+     large headings tight and small labels open on its own. */
   h1, h2, h3, h4 {
-    @apply font-light tracking-tight;
-    font-family: 'Inter', system-ui, sans-serif;
+    @apply font-bold;
+    letter-spacing: -0.03em;
+    font-family: 'DM Sans Variable', 'DM Sans', system-ui, sans-serif;
   }
 
+  /* The one accent word per headline. DM Serif Display has one weight. */
   .serif-italic {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'DM Serif Display', Georgia, serif;
     font-style: italic;
     font-weight: 400;
+    letter-spacing: 0;
   }
 
   button, a { -webkit-tap-highlight-color: transparent; }
@@ -160,7 +166,7 @@
 @layer components {
   /* ── Editorial eyebrow label ── */
   .eyebrow {
-    @apply inline-flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.35em] text-foreground/50;
+    @apply inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.14em] text-foreground/75;
   }
   .eyebrow::before {
     content: '';
@@ -189,7 +195,7 @@
 
   /* ── Editorial headline ── */
   .headline {
-    @apply font-light leading-[1.05] tracking-tight text-foreground;
+    @apply font-bold leading-[1.05] tracking-[-0.03em] text-foreground;
   }
 
   /* ── Quiet card ── */
@@ -205,11 +211,11 @@
 
   /* ── Buttons ── */
   .btn-nb {
-    @apply relative inline-flex items-center justify-center gap-2 px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] transition-all duration-300;
+    @apply relative inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[15px] font-bold transition-all duration-300;
   }
 
   .btn-nb-primary {
-    @apply btn-nb bg-accent-blue text-white hover:bg-accent-blue/90;
+    @apply btn-nb bg-primary text-primary-foreground hover:bg-primary/90;
   }
 
   .btn-nb-outline {
@@ -226,7 +232,7 @@
 
   /* Underlined text link — used across the site */
   .btn-nb-link {
-    @apply relative inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground border-b border-foreground/20 pb-1 hover:border-foreground transition-all;
+    @apply relative inline-flex items-center gap-2 text-[15px] font-bold text-foreground border-b border-foreground/30 pb-1 hover:border-foreground transition-all;
   }
 
   /* The rule above draws a ~22px-tall link. On a touch screen that is half a
@@ -406,7 +412,7 @@
 .light .text-foreground\/60:not(:hover),
 .light .text-foreground\/65:not(:hover) { color: hsl(var(--foreground) / 0.74); }
 .light .text-foreground\/70:not(:hover) { color: hsl(var(--foreground) / 0.8); }
-.light .eyebrow { color: hsl(var(--foreground) / 0.66); }
+.light .eyebrow { color: hsl(var(--foreground) / 0.78); }
 /* Hero photos sit at 40% under background-coloured gradients: on navy that
    reads as a moody photo, on stone it read as a white wash. */
 .light .animate-ken-burns { opacity: 0.7; }
@@ -418,7 +424,7 @@
   --accent-blue: 221 83% 48%;
   --accent-coral: 347 77% 46%;
   --accent-indigo: 243 62% 52%;
-  --accent-yellow: 32 95% 36%;
+  --accent-yellow: 30 95% 32%;
 }
 
 /* Keyboard focus. The template had none, so tabbing through the menus,
