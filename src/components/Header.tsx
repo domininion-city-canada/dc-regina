@@ -179,6 +179,15 @@ const Header: React.FC = () => {
               {item.name}
             </NavLink>
           ))}
+          <a
+            href={BIBLE.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${navLinkClass} inline-flex items-center gap-1`}
+          >
+            {BIBLE.name}
+            <ArrowUpRight className="h-3 w-3 text-foreground/60" aria-hidden="true" />
+          </a>
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
