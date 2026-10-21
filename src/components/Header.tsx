@@ -182,7 +182,7 @@ const Header: React.FC = () => {
           <a
             href={BIBLE.href}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener"
             className={`${navLinkClass} inline-flex items-center gap-1`}
           >
             {BIBLE.name}
@@ -284,7 +284,7 @@ const Header: React.FC = () => {
                   <a
                     href={BIBLE.href}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener"
                     className="btn-nb-outline mb-3 w-full justify-center gap-2"
                   >
                     {BIBLE.name}
