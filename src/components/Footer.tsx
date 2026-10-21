@@ -133,6 +133,17 @@ const Footer: React.FC = () => {
           <p className="text-xs uppercase tracking-[0.1em] text-foreground/45">
             © {currentYear} {SITE.name}
           </p>
+          <p className="text-xs tracking-[0.1em] text-foreground/60">
+            Made by{' '}
+            <a
+              href="https://syntaxready.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4 hover:text-foreground"
+            >
+              SyntaxReady
+            </a>
+          </p>
           <p className="text-xs tracking-[0.1em] text-foreground/45">
             Hero photo: Wascana Lake by Haydn Blackey,{' '}
             <a
