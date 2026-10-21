@@ -166,3 +166,6 @@ export const NAV_SINGLES: NavItem[] = [
 export const NAV_CTA: NavItem = { name: 'Plan a Visit', href: '/find-us', internal: true };
 
 export const FOOTER_EXPLORE: NavItem[] = [...NAV_SINGLES, NAV_CTA];
+
+/** The burger menu's Bible button: scriptural.online, a free Bible to read. */
+export const BIBLE = { name: 'Bible', href: 'https://scriptural.online' } as const;
