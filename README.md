@@ -1,8 +1,8 @@
 # Dominion City Regina
 
 dominioncityregina.com, built on the Dominion City (Brampton) template shared
-by every Dominion City Canada site. Start from `dc-mississauga` and the
-`dc-skill` brand repo for anything new.
+by every Dominion City Canada site. The `dc-skill` brand repo holds the house
+style and the starting point for anything new.
 
 - Facts, nav and copy: `src/data/site.ts` (also repeated in `index.html` JSON-LD and `public/llms.txt`).
 - Hosting: Cloudflare Pages project `dc-regina`, building `main` with `npm run build`
