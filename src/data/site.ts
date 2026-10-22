@@ -167,5 +167,12 @@ export const NAV_CTA: NavItem = { name: 'Plan a Visit', href: '/find-us', intern
 
 export const FOOTER_EXPLORE: NavItem[] = [...NAV_SINGLES, NAV_CTA];
 
-/** The burger menu's Bible button: scriptural.online, a free Bible to read. */
-export const BIBLE = { name: 'Bible', href: 'https://scriptural.online' } as const;
+/**
+ * The footer's verse, linked to it on scriptural.online, a free Bible to read.
+ * King James Version, which is public domain.
+ */
+export const VERSE = {
+  reference: 'Romans 8:28',
+  text: 'And we know that all things work together for good to them that love God, to them who are the called according to his purpose.',
+  href: 'https://scriptural.online/bible/ROM.8.28',
+} as const;

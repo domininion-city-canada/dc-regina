@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Youtube } from 'lucide-react';
 import Logo from './Logo';
-import { ADDRESS, CONTACT, FOOTER_EXPLORE, NAV_CTA, SERVICE_TIME, SITE, SOCIALS, telHref } from '@/data/site';
+import { ADDRESS, CONTACT, FOOTER_EXPLORE, NAV_CTA, SERVICE_TIME, SITE, SOCIALS, VERSE, telHref } from '@/data/site';
 
 /** The icon for each social name in SITE's list; the links live in site.ts. */
 const socialIcons: Record<string, React.ElementType> = {
@@ -101,6 +101,19 @@ const Footer: React.FC = () => {
           </div>
 
         </div>
+
+        {/* A verse, quietly, linked to it on scriptural.online. */}
+        <p className="max-w-2xl pb-8 text-sm font-normal leading-relaxed text-foreground/60">
+          “{VERSE.text}”{' '}
+          <a
+            href={VERSE.href}
+            target="_blank"
+            rel="noopener"
+            className="whitespace-nowrap underline decoration-foreground/20 underline-offset-4 transition-colors hover:text-foreground"
+          >
+            {VERSE.reference}
+          </a>
+        </p>
 
         {/* Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pt-8 border-t border-foreground/10">

@@ -16,7 +16,7 @@ import {
 import Logo from './Logo';
 import { Button } from '@/components/ui/button';
 import { useTheme } from '@/contexts/ThemeContext';
-import { BIBLE, NAV_CTA, NAV_GROUPS, NAV_SINGLES, SITE, type NavGroup, type NavItem } from '@/data/site';
+import { NAV_CTA, NAV_GROUPS, NAV_SINGLES, SITE, type NavGroup, type NavItem } from '@/data/site';
 
 type NavLinkProps = Omit<ComponentPropsWithoutRef<'a'>, 'href'> & {
   item: NavItem;
@@ -179,15 +179,6 @@ const Header: React.FC = () => {
               {item.name}
             </NavLink>
           ))}
-          <a
-            href={BIBLE.href}
-            target="_blank"
-            rel="noopener"
-            className={`${navLinkClass} inline-flex items-center gap-1`}
-          >
-            {BIBLE.name}
-            <ArrowUpRight className="h-3 w-3 text-foreground/60" aria-hidden="true" />
-          </a>
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
@@ -281,15 +272,6 @@ const Header: React.FC = () => {
                 </nav>
 
                 <div className="px-6 md:px-10 pt-8 pb-8 safe-bottom border-t border-foreground/10">
-                  <a
-                    href={BIBLE.href}
-                    target="_blank"
-                    rel="noopener"
-                    className="btn-nb-outline mb-3 w-full justify-center gap-2"
-                  >
-                    {BIBLE.name}
-                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                  </a>
                   <NavLink
                     item={NAV_CTA}
                     onNavigate={() => setSheetOpen(false)}
