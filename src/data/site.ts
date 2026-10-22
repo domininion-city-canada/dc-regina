@@ -153,7 +153,15 @@ export type NavGroup = {
 };
 
 /** Regina has five pages, so the bar lists them directly. */
-export const NAV_GROUPS: NavGroup[] = [];
+export const NAV_GROUPS: NavGroup[] = [
+  {
+    name: 'Grow',
+    items: [
+      { name: 'New Life', href: '/new-life', internal: true, blurb: 'The gospel, explained simply.' },
+      { name: 'Next Steps', href: '/next-steps', internal: true, blurb: 'Tell us where you are. We will reach out.' },
+    ],
+  },
+];
 
 export const NAV_SINGLES: NavItem[] = [
   { name: 'About', href: '/about', internal: true },
@@ -169,3 +177,14 @@ export const FOOTER_EXPLORE: NavItem[] = [...NAV_SINGLES, NAV_CTA];
 
 /** The burger menu's Bible button: scriptural.online, a free Bible to read. */
 export const BIBLE = { name: 'Bible', href: 'https://scriptural.online' } as const;
+
+/**
+ * The church's forms in Temple (templeadmin.com), which stores the answers,
+ * adds people to People and sends the emails. Set one to null and that form
+ * shows as not open yet. docs/TEMPLE_FORMS.md lists each one's questions.
+ */
+export const TEMPLE_FORMS: Record<'planVisit' | 'newLife' | 'nextSteps', string | null> = {
+  planVisit: null,
+  newLife: null,
+  nextSteps: null,
+};

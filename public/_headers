@@ -1,7 +1,7 @@
 # Cloudflare Pages response headers.
 #
 # The CSP ships as Report-Only on purpose. This site loads third-party
-# embeds (YouTube, Google Maps) and posts forms to FormSubmit, and carries an inline
+# embeds (Temple forms, YouTube, Google Maps), and carries an inline
 # JSON-LD block, and a policy that is merely *close* to correct fails silently:
 # the browser drops the resource with no visible error in the page. Read the
 # reports from the deployed URL — not localhost, which proves nothing about
@@ -26,7 +26,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
   Cross-Origin-Opener-Policy: same-origin
-  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; media-src 'self'; connect-src 'self'; frame-src https://www.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; media-src 'self'; connect-src 'self'; frame-src https://templeadmin.com https://www.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'
 
 # Vite fingerprints everything in /assets, so the filename changes whenever the
 # content does. These can be cached forever.
