@@ -17,6 +17,8 @@ const EventsPage = lazy(() => import("./pages/EventsPage"));
 const GivePage = lazy(() => import("./pages/GivePage"));
 const FindUsPage = lazy(() => import("./pages/FindUsPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
+const NewLifePage = lazy(() => import("./pages/NewLifePage"));
+const NextStepsPage = lazy(() => import("./pages/NextStepsPage"));
 
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -53,6 +55,8 @@ const App = () => {
                   <Route path="/give" element={<GivePage />} />
                   <Route path="/find-us" element={<FindUsPage />} />
                   <Route path="/contact" element={<ContactPage />} />
+                  <Route path="/new-life" element={<NewLifePage />} />
+                  <Route path="/next-steps" element={<NextStepsPage />} />
 
                   {/* Keep the catch-all last. */}
                   <Route path="*" element={<NotFound />} />

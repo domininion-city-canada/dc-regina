@@ -152,8 +152,16 @@ export type NavGroup = {
   items: NavItem[];
 };
 
-/** Regina has five pages, so the bar lists them directly. */
-export const NAV_GROUPS: NavGroup[] = [];
+/** The two faith pages sit under "Grow"; the rest are listed directly. */
+export const NAV_GROUPS: NavGroup[] = [
+  {
+    name: 'Grow',
+    items: [
+      { name: 'New Life', href: '/new-life', internal: true, blurb: 'The gospel, explained simply.' },
+      { name: 'Next Steps', href: '/next-steps', internal: true, blurb: 'Tell us where you are. We will reach out.' },
+    ],
+  },
+];
 
 export const NAV_SINGLES: NavItem[] = [
   { name: 'About', href: '/about', internal: true },
@@ -165,7 +173,22 @@ export const NAV_SINGLES: NavItem[] = [
 /** The bar's one call to action. */
 export const NAV_CTA: NavItem = { name: 'Plan a Visit', href: '/find-us', internal: true };
 
-export const FOOTER_EXPLORE: NavItem[] = [...NAV_SINGLES, NAV_CTA];
+export const FOOTER_EXPLORE: NavItem[] = [
+  ...NAV_SINGLES,
+  ...NAV_GROUPS.flatMap((group) => group.items),
+  NAV_CTA,
+];
+
+/**
+ * The church's forms in Temple (templeadmin.com), which stores the answers,
+ * adds people to People and sends the emails. Set one to null and that form
+ * shows as not open yet. docs/TEMPLE_FORMS.md lists each one's questions.
+ */
+export const TEMPLE_FORMS: Record<'planVisit' | 'newLife' | 'nextSteps', string | null> = {
+  planVisit: 'https://templeadmin.com/forms/2d6052d1-f0f6-48dd-b45f-708fc7ca04b9',
+  newLife: 'https://templeadmin.com/forms/56dfa5ee-75a9-40c2-ba08-a27742aad382',
+  nextSteps: 'https://templeadmin.com/forms/d38585a2-4c2d-4995-a0b3-bbedca29c9e2',
+};
 
 /**
  * The footer's verse, linked to it on scriptural.online, a free Bible to read.

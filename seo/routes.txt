@@ -6,3 +6,5 @@
 /give
 /find-us
 /contact
+/new-life
+/next-steps
